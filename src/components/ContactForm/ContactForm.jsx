@@ -14,18 +14,15 @@ const validationSchema = Yup.object({
 });
 
 const ContactForm = ({ onAdd }) => {
-  const initialValues = {
-    name: "",
-    number: "",
-  };
-  const handleSubmit = (data) => {
-    console.log(data);
+  const handleSubmit = (values, { resetForm }) => {
+    onAdd({ id: nanoid(), ...values });
+    resetForm();
   };
 
   return (
     <div>
       <Formik
-        initialValues={initialValues}
+        initialValues={{ name: "", number: "" }}
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
