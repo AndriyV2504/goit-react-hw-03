@@ -1,7 +1,7 @@
-import initialContacts from "./Contact.json";
-import ContactList from "./ContactList/ContactList";
-import ContactForm from "./ContactForm/ContactForm";
-import SearchBox from "./SearchBox/SearchBox";
+import initialContacts from "../Contact.json";
+import ContactList from "../ContactList/ContactList";
+import ContactForm from "../ContactForm/ContactForm";
+import SearchBox from "../SearchBox/SearchBox";
 import { useState } from "react";
 
 const App = () => {

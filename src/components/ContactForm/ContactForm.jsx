@@ -14,28 +14,33 @@ const validationSchema = Yup.object({
 });
 
 const ContactForm = ({ onAdd }) => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onAdd({
-      id: nanoid(),
-    });
-    e.target.reset();
+  const initialValues = {
+    name: "",
+    number: "",
+  };
+  const handleSubmit = (data) => {
+    console.log(data);
   };
 
   return (
     <div>
       <Formik
-        initialValues={{ name: "", number: "" }}
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
-        <Form onSubmit={handleSubmit}>
-          <label htmlFor="name">Name</label>
-          <Field name="name" />
-          <ErrorMessage name="name" component="div" />
+        <Form>
+          <label>
+            <span>Name</span>
+            <Field name="name" />
+            <ErrorMessage name="name" component="div" />
+          </label>
 
-          <label htmlFor="number">Number</label>
-          <Field name="number" />
-          <ErrorMessage name="number" component="div" />
+          <label>
+            <span>Number</span>
+            <Field name="number" />
+            <ErrorMessage name="number" component="div" />
+          </label>
 
           <button type="submit">Add Contact</button>
         </Form>
