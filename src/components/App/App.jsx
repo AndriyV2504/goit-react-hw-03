@@ -20,6 +20,11 @@ const App = () => {
     });
   };
 
+  const clearContacts = () => {
+    localStorage.removeItem("contacts");
+    setContacts(initialContacts);
+  };
+
   const deleteContact = (contactId) => {
     setContacts((prevContacts) => {
       return prevContacts.filter((contact) => contact.id !== contactId);
@@ -32,10 +37,13 @@ const App = () => {
 
   return (
     <div>
-      <h1>Phonebook</h1>
+      <h1>PhoneBook</h1>
       <ContactForm onAdd={addContact} />
       <SearchBox value={filter} onSearch={setFilter} />
-      <ContactList contacts={filteredContacts} onDelete={deleteContact} />
+      <ContactList
+        contacts={filteredContacts}
+        onDelete={(clearContacts, deleteContact)}
+      />
     </div>
   );
 };
